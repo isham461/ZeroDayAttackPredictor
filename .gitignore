@@ -1,0 +1,48 @@
+# =======================================================
+# AegisZero .gitignore
+# =======================================================
+
+# User Learning Files, Reports & Report Generators
+*.pdf
+*.docx
+*.doc
+report.html
+generate_docx.py
+generate_long_report.py
+Project_Report*
+ProRep*
+
+# Large Datasets & Archives (>100MB exceeds GitHub limits)
+cleaned_nsl_kdd.csv
+*.tar.gz
+*.zip
+backend/openjdk.tar.gz
+backend/.jdk/
+.jdk/
+
+# Dependencies & Package Managers
+node_modules/
+frontend/node_modules/
+.venv/
+venv/
+env/
+
+# Build Outputs & Compiled Code
+target/
+backend/target/
+bin/
+java_backend/bin/
+*.class
+
+# Python Bytecode & Caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS & Editor Metadata
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
