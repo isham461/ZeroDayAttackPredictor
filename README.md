@@ -7,24 +7,24 @@ A high-performance, explainable intrusion detection platform designed to identif
 ## 🏛️ System Architecture
 
 ```mermaid
-graph TD
-    A[Frontend Dashboard (HTML5/Tailwind/Vanilla JS)] -->|POST /api/analyze| B[Java Security Orchestrator (:8080)]
-    A -.->|Direct Fallback /predict| C[Python FastAPI ML Engine (:8000)]
-    B -->|Synchronous HTTP POST /predict| C
+flowchart TD
+    A["Frontend Dashboard (SOC UI)"] -->|"POST /api/analyze"| B["Java Security Orchestrator (:8080)"]
+    A -.->|"Direct Fallback /predict"| C["Python FastAPI ML Engine (:8000)"]
+    B -->|"HTTP POST /predict"| C
     
-    subgraph "Python Hybrid AI Microservice"
-        C --> D[Feature Alignment 122 Dims]
-        D --> E[Stage 1: Isolation Forest (Zero-Day Anomaly Filter)]
-        D --> F[Stage 2: XGBoost Classifier (Known Attack Signatures)]
-        E --> G{Hybrid Decision Matrix}
+    subgraph ML ["Python Hybrid AI Microservice"]
+        C --> D["Feature Alignment (122 Dimensions)"]
+        D --> E["Stage 1: Isolation Forest (Zero-Day Filter)"]
+        D --> F["Stage 2: XGBoost (Known Signature Classifier)"]
+        E --> G{"Hybrid Decision Matrix"}
         F --> G
-        G --> H[Stage 3: SHAP TreeExplainer]
-        H --> I[Response Synthesis: Verdict + Attribution + Probabilities]
+        G --> H["Stage 3: SHAP TreeExplainer"]
+        H --> I["Response Synthesis: Verdict + Attribution"]
     end
 
-    I -->|JSON Response| B
-    B -->|Audit Log to Disk| J[(security_audit.log)]
-    B -->|Enriched Verdict| A
+    I -->|"JSON Response"| B
+    B -->|"Audit Log to Disk"| J[("security_audit.log")]
+    B -->|"Enriched Verdict"| A
 ```
 
 ---
@@ -32,7 +32,7 @@ graph TD
 ## 📁 Repository Structure
 
 ```
-OOPsProject/
+ZeroGuard/
 ├── app.py                      # Phase 3: FastAPI ML microservice (Isolation Forest + XGBoost + SHAP)
 ├── train.py                    # Phase 2: Model training, evaluation & artifact serialization
 ├── preprocess.py               # Phase 1: NSL-KDD dataset loading, cleaning & standard scaling
@@ -48,10 +48,11 @@ OOPsProject/
 │       ├── MlServiceClient.java           # Synchronous HttpClient for FastAPI
 │       └── SecurityAuditLogger.java       # Local disk audit logging
 │
-├── frontend/                   # Phase 5: Single-Page Cybersecurity SOC Dashboard
-│   ├── index.html              # Dark SOC dashboard with Tailwind CSS CDN
-│   ├── app.js                  # Vanilla JS telemetry client, presets & SHAP visualizer
-│   └── style.css               # Cybersecurity glow effects & alert animations
+├── frontend/                   # Phase 5: React + Vite Cybersecurity SOC Dashboard
+│   ├── index.html              # Entry HTML
+│   ├── src/                    # React components (LiveTrafficFeed, ControlPanel, etc.)
+│   ├── package.json            # Frontend dependencies
+│   └── vite.config.js          # Vite build config
 │
 ├── models/                     # Serialized Model Artifacts
 │   ├── isolation_forest.joblib # Trained Unsupervised Outlier Detector
@@ -61,7 +62,6 @@ OOPsProject/
 │   ├── sample_presets.json     # 1-click simulation payloads
 │   └── shap_summary_plot.png   # SHAP feature importance plot
 │
-├── cleaned_nsl_kdd.csv         # Processed NSL-KDD dataset (125,973 rows x 124 cols)
 └── KDDTrain+.txt               # Raw NSL-KDD dataset
 ```
 
