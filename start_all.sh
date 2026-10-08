@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# AegisZero - Full Stack Launcher
+# ZeroGuard - Full Stack Launcher
 
 set -e
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$PROJECT_ROOT"
 
 echo "================================================================"
-echo "    Launching AegisZero Hybrid Zero-Day Detection Platform     "
+echo "    Launching ZeroGuard Hybrid Zero-Day Detection Platform     "
 echo "================================================================"
 
 # 1. Start Python FastAPI Microservice (:8000)

@@ -1,4 +1,4 @@
-# AegisZero: Java-Based Hybrid Machine Learning Framework for Zero-Day Network Attack Detection
+# ZeroGuard: Java-Based Hybrid Machine Learning Framework for Zero-Day Network Attack Detection
 
 A high-performance, explainable intrusion detection platform designed to identify both **known attacks** and **novel Zero-Day network exploits** using a hybrid architecture combining unsupervised anomaly detection, supervised gradient boosting, and SHAP decision explainability.
 

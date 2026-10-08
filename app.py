@@ -90,7 +90,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Zero-Day Network Attack Detection ML Engine",
+    title="ZeroGuard: Zero-Day Network Attack Detection ML Engine",
     description="Hybrid Isolation Forest + XGBoost + SHAP API for real-time intrusion detection.",
     version="1.0.0",
     lifespan=lifespan
